@@ -1,0 +1,24 @@
+html
+  head
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title= title
+    link(rel='stylesheet', href='/style.css')
+  body
+    h1 Website Meta Fetcher
+    .container
+      p Just enter website URL and get the website Title, Favicon and Meta Description
+      form(method='POST' action='/api/fetch/')
+        div.form-group
+          input#url.form-control(type='url', placeholder='https://www.example.com', required=true, name='url')
+        button.btn.btn-primary(type='submit') Fetch Website Details
+    
+    footer
+      p
+        a(href='https://github.com/sivadass/website-meta-fetcher') Grab the code
+        span   | 
+        a(href='http://www.twitter.com/share?url=https%3A%2F%2Fgithub.com%2Fsivadass%2Fwebsite-meta-fetcher') Share it on Twitter
+        span   |  
+        a(href='mailto:contact@sivadass.in') Contact Me
+      p 
+        a(href='https://website-meta-fetcher.herokuapp.com/') Website Meta Fetcher
+        span , No Copyright, No Rights Reserved, Just Use It :)
