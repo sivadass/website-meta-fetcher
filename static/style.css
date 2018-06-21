@@ -28,15 +28,21 @@ button {
   display: block;
   width: 100%;
 }
-
-input {
+.form-group {
+  margin-bottom: 16px;
+}
+.form-control {
   border: 1px solid #4099ff;
   height: 44px;
   outline: none;
   display: block;
   width: 100%;
-  margin-bottom: 16px;
-  text-align: center;
+}
+.error {
+  color: #b55858;
+  margin-top: 4px;
+  font-size: 14px;
+  display: block;
 }
 a {
   color: #4099ff;
@@ -71,4 +77,15 @@ footer {
   text-align: center;
   padding: 64px;
   color: #666;
+}
+
+.resultWrapper {
+  display: none;
+}
+pre {
+  font-family: "Courier New", Courier, monospace;
+  white-space: pre-wrap;
+  padding: 32px;
+  background: #fff;
+  border-radius: 4px;
 }
