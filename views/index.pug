@@ -7,7 +7,7 @@ html
     h1 Website Meta Fetcher
     .container
       p Just enter website URL and get the website Title, Favicon and Meta Description
-      form(method='POST' action='/api/fetch/')
+      form(method='get' action='/api/fetch/')
         div.form-group
           input#url.form-control(type='url', placeholder='https://www.example.com', required=true, name='url')
         button.btn.btn-primary(type='submit') Fetch Website Details
