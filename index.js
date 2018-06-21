@@ -1,5 +1,6 @@
 const puppeteer = require("puppeteer");
 const express = require("express");
+const port = process.env.PORT || 3000;
 
 /* (async () => {
   const browser = await puppeteer.launch();
@@ -30,4 +31,4 @@ app.get("/api/fetch/", (req, res) =>
   res.send("Fetch details about " + req.params.url)
 );
 
-app.listen(3000, () => console.log("Example app listening on port 3000!"));
+app.listen(port, () => console.log("Example app listening on port " + port));
