@@ -8,7 +8,7 @@ $(document).ready(function() {
     },
     errorElement: "span",
     messages: {
-      url: "Please enter a valid URL"
+      url: "Please enter a valid URL (eg: https://www.example.com)"
     },
     submitHandler: function(e) {
       var t = $("#urlForm").serialize();

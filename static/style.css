@@ -88,4 +88,5 @@ pre {
   padding: 32px;
   background: #fff;
   border-radius: 4px;
+  word-break: break-all;
 }

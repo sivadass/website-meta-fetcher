@@ -31,7 +31,11 @@ app.get(
       () => document.querySelector('link[rel="shortcut icon"]').href
     );
     let metaDescription = await page.evaluate(
-      () => document.querySelector('meta[name="description"]').content
+      () => {
+        let metaTag = document.querySelector('meta[name="description"]');
+        if(metaTag) return metaTag.content;
+        return metaTag
+      }
     );
     const pageTitle = await page.title();
     let result = {
