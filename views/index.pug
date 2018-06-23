@@ -9,7 +9,11 @@ html
     script(src='/jquery.validate.min.js')
     script(src='/additional-methods.min.js')
   body
-    h1 Website Meta Fetcher
+    header
+      a(href="/")
+        h1 Website Meta Fetcher
+      nav
+        a(href="/docs/") Check API Documentation
     .container
       p Just enter website URL and get the website Title, Favicon and Meta Description
       form#urlForm

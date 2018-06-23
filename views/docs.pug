@@ -9,9 +9,75 @@ html
     script(src='/jquery.validate.min.js')
     script(src='/additional-methods.min.js')
   body
-    h1 Website Meta Fetcher - Documentation
+    header
+      a(href="/")
+        h1 Website Meta Fetcher
+      nav
+        a(href="/") Go back to home
     .container
-      p Coming Soon!
+      h3 APIs
+
+      p All APIs are served over HTTPS and CORS Supported, so just feel free to access it from any domain.
+
+      p Base URL: 
+        a(href="https://website-meta-fetcher.herokuapp.com/api") https://website-meta-fetcher.herokuapp.com/api
+
+      table
+        tr
+          td(width="33%") Title
+          td Fetch as bot
+        tr
+          td(width="33%") URL
+          td /fetch-as-bot?url=:url
+        tr
+          td(width="33%") Method
+          td GET
+        tr
+          td(width="33%") URL Params 
+          td 
+            | Required: url=[string] #[br]
+            | (A valid website URL)
+        tr
+          td(width="33%") Data Params
+          td Not Applicable
+        tr
+          td(width="33%") Response Codes
+          td 
+            | Success (200 OK), #[br]
+            | Bad Request (400)
+        tr
+          td(width="33%") Example
+          td 
+            a(href="https://website-meta-fetcher.herokuapp.com/api/fetch-as-bot/?url=https://sivadass.in" target="_blank") https://website-meta-fetcher.herokuapp.com/api/fetch-as-bot/?url=https://sivadass.in
+            
+      table
+        tr
+          td(width="33%") Title
+          td Fetch as Ajax
+        tr
+          td(width="33%") URL
+          td /fetch-as-bot?url=:url
+        tr
+          td(width="33%") Method
+          td GET
+        tr
+          td(width="33%") URL Params 
+          td 
+            | Required: url=[string] #[br]
+            | (A valid website URL)
+        tr
+          td(width="33%") Data Params
+          td Not Applicable
+        tr
+          td(width="33%") Response Codes
+          td 
+            | Success (200 OK), #[br]
+            | Bad Request (400)
+        tr
+          td(width="33%") Example
+          td 
+            a(href="https://website-meta-fetcher.herokuapp.com/api/fetch-as-bot/?url=https://sivadass.in" target="_blank") https://website-meta-fetcher.herokuapp.com/api/fetch-as-ajax/?url=https://sivadass.in
+
     footer
       p
         a(href='https://github.com/sivadass/website-meta-fetcher') Grab the code

@@ -5,11 +5,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-h1 {
+header {
   text-align: center;
-  color: #999;
   display: block;
   margin: 64px 0;
+}
+
+header a h1 {
+  color: #666;
 }
 
 button,
@@ -90,4 +93,32 @@ pre {
   background: #fff;
   border-radius: 4px;
   word-break: break-all;
+}
+
+table {
+  width: 100%;
+  display: block;
+}
+table thead,
+table tbody {
+  margin-bottom: 8px;
+  display: block;
+  width: 100%;
+}
+table tr th {
+  text-align: left;
+  text-transform: uppercase;
+  color: #999;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+table tr th,
+table tr td {
+  vertical-align: top;
+  line-height: 22px;
+}
+
+table tr td:first-child {
+  color: #999;
 }
