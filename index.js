@@ -2,23 +2,26 @@ const puppeteer = require("puppeteer");
 const express = require("express");
 const asyncMiddleware = require("./utils/async-middleware");
 const port = process.env.PORT || 3000;
+const request = require("request");
+const cheerio = require("cheerio");
+const cors = require("cors");
 
 const app = express();
 app.set("view engine", "pug");
 app.use(express.static(__dirname + "/static"));
+app.use(cors());
 
 app.get("/", (req, res) =>
-  //res.send("Welcome to Website Meta Fetcher powered by Google's Puppeteer")
   res.render("index", { title: "Hey", message: "Hello there!" })
 );
 
+app.get("/docs/", (req, res) =>
+  res.render("docs", { title: "API Documentation", message: "Hello there!" })
+);
+
 app.get(
-  "/api/fetch/",
+  "/api/fetch-as-bot/",
   asyncMiddleware(async (req, res, next) => {
-    /* 
-    if there is an error thrown in getUserFromDb, asyncMiddleware
-    will pass it to next() and express will handle the error;
-  */
     const url = req.query.url;
     const browser = await puppeteer.launch({
       args: ["--no-sandbox", "--disable-setuid-sandbox"]
@@ -26,17 +29,14 @@ app.get(
     const page = await browser.newPage();
 
     await page.goto(url);
-    //let bodyHTML = await page.evaluate(() => document.body.innerHTML);
     let favicon = await page.evaluate(
       () => document.querySelector('link[rel="shortcut icon"]').href
     );
-    let metaDescription = await page.evaluate(
-      () => {
-        let metaTag = document.querySelector('meta[name="description"]');
-        if(metaTag) return metaTag.content;
-        return metaTag
-      }
-    );
+    let metaDescription = await page.evaluate(() => {
+      let metaTag = document.querySelector('meta[name="description"]');
+      if (metaTag) return metaTag.content;
+      return metaTag;
+    });
     const pageTitle = await page.title();
     let result = {
       title: pageTitle,
@@ -47,5 +47,27 @@ app.get(
     res.json(result);
   })
 );
+
+app.get("/api/fetch-as-ajax/", (req, res) => {
+  const url = req.query.url;
+  request(url, function(error, response, html) {
+    if (!error) {
+      let $ = cheerio.load(html);
+      let title = $("title").text();
+      let description = $('meta[name="description"]').attr("content");
+      let favicon = url + $('link[rel="shortcut icon"]').attr("href");
+      let result = {
+        title: title,
+        description: description,
+        favicon: favicon
+      };
+      res.send(result);
+    } else {
+      res.send(
+        "OOPS, there's some problem, please check the URL or try again!"
+      );
+    }
+  });
+});
 
 app.listen(port, () => console.log("Example app listening on port " + port));

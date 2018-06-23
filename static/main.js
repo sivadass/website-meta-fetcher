@@ -15,7 +15,7 @@ $(document).ready(function() {
       $.ajax({
         type: "get",
         async: true,
-        url: "/api/fetch/",
+        url: "/api/fetch-as-ajax/",
         data: t,
         datatype: "json",
         cache: !0,
@@ -29,7 +29,12 @@ $(document).ready(function() {
           $("#submitButtonLabel").html("Fetch Website Details");
           $("#urlForm")[0].reset();
         },
-        error: function(error) {},
+        error: function(jqXHR, exception) {
+          var msg = jqXHR.responseJSON.error.message;
+          $(".errorWrapper")
+            .show()
+            .html(msg);
+        },
         complete: function() {}
       });
     }
