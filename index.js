@@ -55,7 +55,12 @@ app.get("/api/fetch-as-ajax/", (req, res) => {
       let $ = cheerio.load(html);
       let title = $("title").text();
       let description = $('meta[name="description"]').attr("content");
-      let favicon = url + $('link[rel="shortcut icon"]').attr("href");
+      let favicon = $('link[rel="shortcut icon"]').attr("href");
+      // check whether url is having protocol in front of it or not
+      let protocol = "https://";
+      if (favicon.substr(0, protocol.length) !== protocol) {
+        favicon = protocol + favicon;
+      }
       let result = {
         title: title,
         description: description,
